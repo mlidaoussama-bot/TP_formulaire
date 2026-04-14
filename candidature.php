@@ -40,6 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erreurs[] = "La motivation doit contenir au moins 30 caractères.";
     }
 
+    if (strlen($motivation) > 300) {
+        $erreurs[] = "La motivation ne doit pas dépasser 300 caractères.";
+    }
+
     if (!is_numeric($age) || $age < 16 || $age > 30) {
         $erreurs[] = "L'âge doit être un nombre entre 16 et 30.";
     }
@@ -110,7 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </select><br><br>
 
         <label for="motivation">Motivation :</label><br>
-        <textarea id="motivation" name="motivation" rows="5" cols="40"><?php echo htmlspecialchars($motivation); ?></textarea><br><br>
+        <textarea id="motivation" name="motivation" rows="5" cols="40"><?php echo htmlspecialchars($motivation); ?></textarea><br>
+        <small><?php echo strlen($motivation); ?> / 300 caractères</small><br><br>
 
         <input type="checkbox" id="reglement" name="reglement" <?php if ($reglement) echo 'checked'; ?>>
         <label for="reglement">J’accepte le règlement</label><br><br>
