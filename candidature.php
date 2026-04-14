@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $prenom = $_POST['prenom'] ?? '';
     $nom = $_POST['nom'] ?? '';
     $email = $_POST['email'] ?? '';
+    $email_confirm = $_POST['email_confirm'] ?? '';
     $age = $_POST['age'] ?? '';
     $filiere = $_POST['filiere'] ?? '';
     $motivation = $_POST['motivation'] ?? '';
