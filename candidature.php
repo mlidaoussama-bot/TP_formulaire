@@ -57,6 +57,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Document</title>
 </head>
 <body>
+<?php if (!empty($erreurs)): ?>
+    <ul class="erreurs">
+        <?php foreach ($erreurs as $e): ?>
+            <li><?php echo $e; ?></li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
  <form action="" method="POST">
 
         <label for="prenom">Prénom :</label><br>
