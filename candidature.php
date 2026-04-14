@@ -58,13 +58,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Document</title>
 </head>
 <body>
-<?php if (!empty($erreurs)): ?>
-    <ul class="erreurs">
-        <?php foreach ($erreurs as $e): ?>
-            <li><?php echo $e; ?></li>
-        <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+<?php if (empty($erreurs) && $_SERVER['REQUEST_METHOD'] === 'POST'): ?>
+
+    <h1>Candidature reçue !</h1>
+    <div class="confirmation">
+        <p><strong>Prénom :</strong> <?php echo htmlspecialchars($prenom); ?></p>
+        <p><strong>Nom :</strong> <?php echo htmlspecialchars($nom); ?></p>
+        <p><strong>Email :</strong> <?php echo htmlspecialchars($email); ?></p>
+        <p><strong>Âge :</strong> <?php echo htmlspecialchars($age); ?></p>
+        <p><strong>Filière :</strong> <?php echo htmlspecialchars($filiere); ?></p>
+        <p><strong>Motivation :</strong></p>
+        <p><?php echo htmlspecialchars($motivation); ?></p>
+        <p>Votre candidature a bien été enregistrée. Nous vous contacterons à l'adresse indiquée.</p>
+        <a href="candidature.php">Soumettre une nouvelle candidature</a>
+    </div>
+
+<?php else: ?>
+
+    <?php if (!empty($erreurs)): ?>
+        <ul class="erreurs">
+            <?php foreach ($erreurs as $e): ?>
+                <li><?php echo $e; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 
  <form action="" method="POST">
 
@@ -102,6 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
 
+<?php endif; ?>
     
 </body>
 </html>
